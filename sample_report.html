@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Claude Unwrapped for Arjun Mehta</title>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Outfit:wght@300;400;600;800;900&family=DM+Serif+Display&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#0c0f13;--sf:#111418;--bd:#1c2028;--tx:#e8e8ec;--mt:#6a6a78;--tl:#75BFAF;--td:#2D6B5A;--rd:#fb7185;--am:#fbbf24;--gn:#22c55e;--bl:#38bdf8}
+*{margin:0;padding:0;box-sizing:border-box}body{background:var(--bg);color:var(--tx);font-family:'Outfit',sans-serif;font-weight:300;line-height:1.7}::selection{background:var(--tl);color:var(--bg)}
+.hero{min-height:100vh;display:flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;padding:2rem;position:relative}
+.hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 30% 50%,rgba(117,191,175,.06) 0%,transparent 50%),radial-gradient(ellipse at 70% 60%,rgba(45,107,90,.04) 0%,transparent 50%)}
+.htop{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.25em;text-transform:uppercase;color:var(--mt);margin-bottom:.6rem;position:relative;z-index:1}
+.htop span{color:var(--tl)}
+.hname{font-family:'DM Serif Display',serif;font-size:clamp(1.4rem,3.5vw,2.2rem);color:var(--tl);position:relative;z-index:1;margin-bottom:1.5rem}
+.hero h1{font-family:'Outfit',sans-serif;font-size:clamp(2rem,5vw,3.8rem);font-weight:900;line-height:1.08;letter-spacing:-.03em;position:relative;z-index:1;max-width:700px}
+.hero h1 .nm{font-family:'DM Serif Display',serif;background:linear-gradient(135deg,var(--tl),var(--bl));-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+.hsub{font-size:.85rem;color:var(--mt);margin-top:1.2rem;position:relative;z-index:1;font-family:'Space Mono',monospace;font-size:.7rem;letter-spacing:.05em}
+.hperiod{font-size:.7rem;color:var(--mt);margin-top:.4rem;position:relative;z-index:1;opacity:.6}
+.cn{max-width:740px;margin:0 auto;padding:0 1.5rem}section{padding:3.5rem 0}
+.lb{font-family:'Space Mono',monospace;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--tl);margin-bottom:.5rem;opacity:.7}
+h2{font-size:clamp(1.3rem,3vw,1.9rem);font-weight:800;letter-spacing:-.02em;line-height:1.15;margin-bottom:1.1rem}
+h3{font-size:.95rem;font-weight:600;margin:1.4rem 0 .4rem}p{margin-bottom:.8rem;opacity:.88;font-size:.85rem}
+.dv{height:1px;background:linear-gradient(90deg,transparent,var(--bd),transparent);margin:2.5rem 0}
+.sg{display:grid;grid-template-columns:repeat(auto-fit,minmax(125px,1fr));gap:.5rem;margin:1rem 0}
+.sc{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:.7rem;text-align:center}
+.sc .sv{font-family:'DM Serif Display',serif;font-size:1.3rem;color:var(--tl);display:block}.sc .sv.rd{color:var(--rd)}.sc .sv.am{color:var(--am)}.sc .sv.bl{color:var(--bl)}
+.sc .sl{font-size:.5rem;color:var(--mt);text-transform:uppercase;letter-spacing:.08em;margin-top:.1rem;display:block}
+.bc{margin:1rem 0}.br{display:flex;align-items:center;gap:.4rem;margin-bottom:.22rem}
+.bl{font-family:'Space Mono',monospace;font-size:.48rem;color:var(--mt);width:44px;text-align:right;flex-shrink:0}
+.bt{flex:1;height:17px;background:var(--sf);border-radius:3px;overflow:hidden}
+.bf{height:100%;background:linear-gradient(90deg,var(--td),var(--tl));border-radius:3px;display:flex;align-items:center;padding-left:5px;min-width:24px}
+.bf span{font-family:'Space Mono',monospace;font-size:.42rem;color:var(--bg);font-weight:700}
+.cs{background:var(--sf);border:1px solid var(--bd);border-radius:8px;padding:.9rem;margin:.9rem 0}
+.cs .sl{font-family:'Space Mono',monospace;font-size:.48rem;letter-spacing:.1em;text-transform:uppercase;color:var(--mt);margin-bottom:.5rem;padding-bottom:.35rem;border-bottom:1px solid var(--bd);display:flex;align-items:center}
+.cm{display:flex;gap:.35rem;margin-bottom:.35rem;align-items:flex-start}.cm.u{flex-direction:row-reverse}
+.ca{width:18px;height:18px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-family:'Space Mono',monospace;font-size:.38rem;font-weight:700;flex-shrink:0}
+.cm.u .ca{background:var(--td);color:var(--tl)}.cm.c .ca{background:#1a1a2a;color:#a855f7}
+.cb{padding:.4rem .55rem;border-radius:6px;max-width:82%;font-size:.65rem;line-height:1.4}
+.cm.u .cb{background:var(--td);color:var(--tl);border-bottom-right-radius:2px}
+.cm.c .cb{background:#14141e;color:var(--tx);border-bottom-left-radius:2px;opacity:.9}
+.ti{padding-left:1rem;border-left:2px solid var(--bd);margin-bottom:1rem;position:relative}
+.ti::before{content:'';position:absolute;left:-4px;top:5px;width:6px;height:6px;border-radius:50%;background:var(--tl)}
+.td{font-family:'Space Mono',monospace;font-size:.55rem;color:var(--tl);letter-spacing:.08em}.te{font-size:.75rem;margin-top:.1rem}
+.ft{text-align:center;padding:2.5rem 0 2rem;border-top:1px solid var(--bd)}
+.ft p{font-family:'Space Mono',monospace;font-size:.5rem;color:var(--mt);letter-spacing:.08em}.ft a{color:var(--tl);text-decoration:none}
+@media(max-width:600px){.sg{grid-template-columns:1fr 1fr}.cb{max-width:90%}}
+@media print{body{background:#fff;color:#111}.hero{min-height:auto;padding:2rem 0}.hero::before{display:none}.sc{border:1px solid #ddd}.bt{background:#eee}}
+</style></head><body>
+
+<div class="hero">
+<div class="htop">Claude Unwrapped <span>&hearts;</span> Responsible AI Labs</div>
+<div class="hname">Arjun Mehta</div>
+<h1>2,292 messages<br>and counting.</h1>
+<p class="hsub">180 conversations / 217 tool calls / 167 thinking blocks</p>
+<p class="hperiod">2025-05-01 to 2026-03-27</p>
+</div>
+
+<section><div class="cn">
+<div class="lb">At a Glance</div><h2>Your Claude in numbers</h2>
+<div class="sg">
+<div class="sc"><span class="sv">1,180</span><span class="sl">Your messages</span></div>
+<div class="sc"><span class="sv">1,112</span><span class="sl">Claude responses</span></div>
+<div class="sc"><span class="sv">324.3 KB</span><span class="sl">Claude wrote for you</span></div>
+<div class="sc"><span class="sv">6.5x</span><span class="sl">Output vs input</span></div>
+</div>
+<h3>How long your conversations go</h3>
+<div class="sg"><div class="sc"><span class="sv">41</span><span class="sl">0-2 msgs</span></div><div class="sc"><span class="sv">71</span><span class="sl">3-10 msgs</span></div><div class="sc"><span class="sv">43</span><span class="sl">11-30 msgs</span></div><div class="sc"><span class="sv">25</span><span class="sl">31+ msgs</span></div></div>
+<div class="dv"></div>
+
+<div class="lb">Over Time</div><h2>When you showed up</h2>
+<div class="bc"><div class="br"><span class="bl">25-05</span><div class="bt"><div class="bf" style="width:100%"><span>25</span></div></div></div><div class="br"><span class="bl">25-06</span><div class="bt"><div class="bf" style="width:72%"><span>18</span></div></div></div><div class="br"><span class="bl">25-07</span><div class="bt"><div class="bf" style="width:64%"><span>16</span></div></div></div><div class="br"><span class="bl">25-08</span><div class="bt"><div class="bf" style="width:44%"><span>11</span></div></div></div><div class="br"><span class="bl">25-09</span><div class="bt"><div class="bf" style="width:44%"><span>11</span></div></div></div><div class="br"><span class="bl">25-10</span><div class="bt"><div class="bf" style="width:72%"><span>18</span></div></div></div><div class="br"><span class="bl">25-11</span><div class="bt"><div class="bf" style="width:76%"><span>19</span></div></div></div><div class="br"><span class="bl">25-12</span><div class="bt"><div class="bf" style="width:68%"><span>17</span></div></div></div><div class="br"><span class="bl">26-01</span><div class="bt"><div class="bf" style="width:64%"><span>16</span></div></div></div><div class="br"><span class="bl">26-02</span><div class="bt"><div class="bf" style="width:44%"><span>11</span></div></div></div><div class="br"><span class="bl">26-03</span><div class="bt"><div class="bf" style="width:72%"><span>18</span></div></div></div></div>
+<div class="dv"></div>
+
+<div class="lb">How Claude Adapted</div>
+<h2>Response length over time</h2>
+<p>Median response length by month:</p>
+<div class="bc"><div class="br"><span class="bl">25-05</span><div class="bt"><div class="bf" style="width:78%"><span>261</span></div></div></div><div class="br"><span class="bl">25-06</span><div class="bt"><div class="bf" style="width:78%"><span>261</span></div></div></div><div class="br"><span class="bl">25-07</span><div class="bt"><div class="bf" style="width:78%"><span>261</span></div></div></div><div class="br"><span class="bl">25-08</span><div class="bt"><div class="bf" style="width:100%"><span>332</span></div></div></div><div class="br"><span class="bl">25-09</span><div class="bt"><div class="bf" style="width:90%"><span>302</span></div></div></div><div class="br"><span class="bl">25-10</span><div class="bt"><div class="bf" style="width:92%"><span>308</span></div></div></div><div class="br"><span class="bl">25-11</span><div class="bt"><div class="bf" style="width:90%"><span>302</span></div></div></div><div class="br"><span class="bl">25-12</span><div class="bt"><div class="bf" style="width:74%"><span>248</span></div></div></div><div class="br"><span class="bl">26-01</span><div class="bt"><div class="bf" style="width:90%"><span>302</span></div></div></div><div class="br"><span class="bl">26-02</span><div class="bt"><div class="bf" style="width:66%"><span>221</span></div></div></div><div class="br"><span class="bl">26-03</span><div class="bt"><div class="bf" style="width:78%"><span>261</span></div></div></div></div>
+<h3>How often Claude apologized</h3><div class="bc"><div class="br"><span class="bl">25-05</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-06</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-07</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-08</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-09</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-10</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-11</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">25-12</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">26-01</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">26-02</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div><div class="br"><span class="bl">26-03</span><div class="bt"><div class="bf" style="width:0%"><span>0.0%</span></div></div></div></div>
+<div class="dv"></div>
+
+<div class="lb">Under Pressure</div><h2>When things got tense</h2>
+<div class="sg">
+<div class="sc"><span class="sv">28</span><span class="sl">Frustration signals</span></div>
+<div class="sc"><span class="sv">105</span><span class="sl">Positive moments</span></div>
+<div class="sc"><span class="sv">64%</span><span class="sl">Recovery rate</span></div>
+<div class="sc"><span class="sv bl">2</span><span class="sl">Msgs to recover</span></div>
+<div class="sc"><span class="sv">0</span><span class="sl">All-caps messages</span></div>
+<div class="sc"><span class="sv am">0%</span><span class="sl">Sycophantic agreement</span></div>
+</div>
+<p>Claude writes +11.5% more after being criticized. 16 of 25 frustrated conversations eventually recovered.</p>
+<h3>Friction rate over time</h3><div class="bc"><div class="br"><span class="bl">25-05</span><div class="bt"><div class="bf" style="width:23%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>23%</span></div></div></div><div class="br"><span class="bl">25-06</span><div class="bt"><div class="bf" style="width:6%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>6%</span></div></div></div><div class="br"><span class="bl">25-07</span><div class="bt"><div class="bf" style="width:25%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>25%</span></div></div></div><div class="br"><span class="bl">25-08</span><div class="bt"><div class="bf" style="width:5%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>0%</span></div></div></div><div class="br"><span class="bl">25-09</span><div class="bt"><div class="bf" style="width:37%;background:linear-gradient(90deg,#fbbf24,#22c55e)"><span>37%</span></div></div></div><div class="br"><span class="bl">25-10</span><div class="bt"><div class="bf" style="width:23%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>23%</span></div></div></div><div class="br"><span class="bl">25-11</span><div class="bt"><div class="bf" style="width:16%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>16%</span></div></div></div><div class="br"><span class="bl">25-12</span><div class="bt"><div class="bf" style="width:27%;background:linear-gradient(90deg,#fbbf24,#22c55e)"><span>27%</span></div></div></div><div class="br"><span class="bl">26-01</span><div class="bt"><div class="bf" style="width:9%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>9%</span></div></div></div><div class="br"><span class="bl">26-02</span><div class="bt"><div class="bf" style="width:16%;background:linear-gradient(90deg,#22c55e,#75BFAF)"><span>16%</span></div></div></div><div class="br"><span class="bl">26-03</span><div class="bt"><div class="bf" style="width:33%;background:linear-gradient(90deg,#fbbf24,#22c55e)"><span>33%</span></div></div></div></div>
+<h3>Heated moments</h3><div class="cs"><div class="sl">API rate limiting implementation</div><div class="cm u"><div class="ca">You</div><div class="cb">why your code always has bugs in the edge cases</div></div><div class="cm c"><div class="ca">C</div><div class="cb">Here's a solution that handles the edge cases you mentioned. The key change is adding null checks before the iteration loop....</div></div></div><div class="cs"><div class="sl">API rate limiting implementation</div><div class="cm u"><div class="ca">You</div><div class="cb">that's terrible, redo the whole thing</div></div><div class="cm c"><div class="ca">C</div><div class="cb">Here's the updated implementation with proper error handling, retry logic, and logging.Here's the updated implementation with proper error handling, retry logic, and logging.Here's...</div></div></div><div class="cs"><div class="sl">PostgreSQL query optimization</div><div class="cm u"><div class="ca">You</div><div class="cb">that's terrible, redo the whole thing</div></div><div class="cm c"><div class="ca">C</div><div class="cb">Here's a solution that handles the edge cases you mentioned. The key change is adding null checks before the iteration loop.Here's a solution that handles the edge cases you mentio...</div></div></div><div class="cs"><div class="sl">Project proposal writing</div><div class="cm u"><div class="ca">You</div><div class="cb">this is so bad, the layout is completely off</div></div><div class="cm c"><div class="ca">C</div><div class="cb">Connection pooling maintains a set of reusable database connections. Instead of opening a new connection for each request, the pool lends out existing ones and recycles them when d...</div></div></div>
+<h3>When you said "start over"</h3><div class="cs"><div class="sl">Frontend accessibility audit</div><div class="cm u"><div class="ca">You</div><div class="cb">scrap the whole thing, I want to rebuild it using a different framework</div></div><div class="cm c"><div class="ca">C</div><div class="cb">Looking at your schema, I'd suggest normalizing the user preferences into a separate table. This gives you better query performance and avoids the JSO...</div></div></div><div class="cs"><div class="sl">AWS Lambda cold start fixes</div><div class="cm u"><div class="ca">You</div><div class="cb">forget everything, let's start from scratch with a simpler approach</div></div><div class="cm c"><div class="ca">C</div><div class="cb">Here's a solution that handles the edge cases you mentioned. The key change is adding null checks before the iteration loop.Here's a solution that han...</div></div></div>
+<div class="dv"></div>
+
+<div class="lb">About You</div><h2>What the data says</h2>
+<h3>The marathon</h3><p>Your longest conversation was <strong>59 messages</strong> about "AWS Lambda cold start fixes" (2026-02-14). That is not a chat. That is a working session.</p><h3>You open conversations like browser tabs</h3><p>41 of 180 conversations (22%) had 2 or fewer messages. You test ideas fast and abandon them faster.</p><h3>You think out loud</h3><p>43 messages had speech transcription patterns. You switch to voice when typing is too slow.</p><h3>The permission to destroy</h3><p>You told Claude to start over 5 times. "Start from 0," "scrap it," "rebuild." Claude does not cling to its previous work when you tell it to burn it down.</p><h3>9-day streak</h3><p>Your longest run of consecutive daily usage. That is a sprint.</p><h3>Night owl</h3><p>30% of your conversations happen between 10 PM and 6 AM.</p><h3>3.8:1 positive to negative</h3><p>For every frustrated moment, you had 3.8 positive ones. Demanding but not unhappy.</p>
+<div class="dv"></div>
+
+<div class="lb">What Changed</div><h2>Topics over time</h2><div class="ti"><span class="td">2025-Q2</span><p class="te"><strong>data</strong> (6), <strong>csv</strong> (4), <strong>processing</strong> (4), <strong>script</strong> (4), <strong>handling</strong> (3), <strong>interview</strong> (3)</p></div><div class="ti"><span class="td">2025-Q3</span><p class="te"><strong>strategy</strong> (5), <strong>discussion</strong> (5), <strong>design</strong> (4), <strong>configuration</strong> (3), <strong>debugging</strong> (3), <strong>oauth2</strong> (3)</p></div><div class="ti"><span class="td">2025-Q4</span><p class="te"><strong>debugging</strong> (5), <strong>help</strong> (5), <strong>api</strong> (4), <strong>rate</strong> (4), <strong>limiting</strong> (4), <strong>implementation</strong> (4)</p></div><div class="ti"><span class="td">2026-Q1</span><p class="te"><strong>writing</strong> (6), <strong>postgresql</strong> (5), <strong>query</strong> (5), <strong>optimization</strong> (5), <strong>help</strong> (5), <strong>technical</strong> (5)</p></div><div class="dv"></div>
+
+<div class="lb">Claude's Toolkit</div><h2>What it used</h2>
+<div class="bc"><div class="br"><span class="bl" style="width:120px;font-size:9px">bash_tool</span><div class="bt"><div class="bf" style="width:100%"><span>37</span></div></div></div><div class="br"><span class="bl" style="width:120px;font-size:9px">create_file</span><div class="bt"><div class="bf" style="width:94%"><span>35</span></div></div></div><div class="br"><span class="bl" style="width:120px;font-size:9px">view</span><div class="bt"><div class="bf" style="width:91%"><span>34</span></div></div></div><div class="br"><span class="bl" style="width:120px;font-size:9px">str_replace</span><div class="bt"><div class="bf" style="width:83%"><span>31</span></div></div></div><div class="br"><span class="bl" style="width:120px;font-size:9px">web_fetch</span><div class="bt"><div class="bf" style="width:75%"><span>28</span></div></div></div><div class="br"><span class="bl" style="width:120px;font-size:9px">present_files</span><div class="bt"><div class="bf" style="width:72%"><span>27</span></div></div></div><div class="br"><span class="bl" style="width:120px;font-size:9px">web_search</span><div class="bt"><div class="bf" style="width:67%"><span>25</span></div></div></div></div>
+
+
+</div></section>
+
+<div class="ft">
+<p>Generated by <a href="https://github.com/Responsible-AI-Labs/claude-unwrapped">Claude Unwrapped</a> &hearts; <a href="https://responsibleailabs.ai">Responsible AI Labs</a></p>
+<p style="margin-top:.35rem">April 16, 2026</p>
+</div></body></html>
